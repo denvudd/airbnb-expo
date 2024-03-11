@@ -4,14 +4,16 @@ import { StyleSheet, View } from "react-native";
 
 import ExploreHeader from "@/components/ExploreHeader";
 import Listing from "@/components/Listing";
+import ListingsMap from "@/components/ListingsMap";
 
 import listingsData from "@/data/airbnb-listings.json";
+import listingsDataGeo from "@/data/airbnb-listings.geo.json";
 
 interface PageProps {}
 
 const Page: React.FC<PageProps> = ({}) => {
   const [category, setCategory] = useState<string>("");
-  const items = useMemo(() => listingsData as any, []);
+  const items = useMemo(() => listingsDataGeo as any, []);
 
   const onDataChange = (category: string) => {
     setCategory(category);
@@ -24,7 +26,8 @@ const Page: React.FC<PageProps> = ({}) => {
           header: () => <ExploreHeader onCategoryChange={onDataChange} />,
         }}
       />
-      <Listing category={category} listings={items} />
+      {/* <Listing category={category} listings={items} /> */}
+      <ListingsMap listings={items.features} />
     </View>
   );
 };

@@ -15,6 +15,7 @@ import Animated from "react-native-reanimated"
 
 import { defaultStyles } from "@/styles";
 import type { ListingItem } from "@/types";
+import COLORS from "@/constants/Colors";
 
 interface ListingProps {
   listings: any[];
@@ -41,7 +42,7 @@ const Listing: FC<ListingProps> = ({ category, listings }) => {
         <Animated.View style={styles.listing} entering={FadeInRight} exiting={FadeOutLeft}>
           <Image source={{ uri: item.medium_url }} style={styles.image} />
           <TouchableOpacity style={styles.favoriteBtn}>
-            <Ionicons name="heart-outline" size={24} color="#000" />
+            <Ionicons name="heart-outline" size={22} color="#000" />
           </TouchableOpacity>
 
           <View style={styles.content}>
@@ -90,12 +91,18 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   favoriteBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: 50,
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    color: COLORS.primary,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#A2A0A2",
     position: "absolute",
-    right: 25,
     top: 25,
-    padding: 5,
-    borderRadius: 10,
-    backgroundColor: "rgba(255, 255, 255, 0.80)",
+    right: 25,
   },
   content: {
     flexDirection: "row",
