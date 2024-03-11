@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-interface PageProps {}
+interface ProfileProps {}
 
-const Page: React.FC<PageProps> = ({}) => {
+const Profile: React.FC<ProfileProps> = ({}) => {
   return (
     <View>
       <Text>hello</Text>
@@ -11,4 +11,4 @@ const Page: React.FC<PageProps> = ({}) => {
   );
 };
 
-export default Page;
+export default Profile;

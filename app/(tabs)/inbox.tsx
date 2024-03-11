@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-interface PageProps {}
+interface InboxProps {}
 
-const Page: React.FC<PageProps> = ({}) => {
+const Inbox: React.FC<InboxProps> = ({}) => {
   return (
     <View>
       <Text>hello</Text>
@@ -11,4 +11,4 @@ const Page: React.FC<PageProps> = ({}) => {
   );
 };
 
-export default Page;
+export default Inbox;
