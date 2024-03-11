@@ -2,6 +2,18 @@ import COLORS from "@/constants/Colors";
 import { StyleSheet } from "react-native";
 
 export const defaultStyles = StyleSheet.create({
+  regular: {
+    fontFamily: "mon",
+  },
+  semiBold: {
+    fontFamily: "mon-sb",
+  },
+  medium: {
+    fontFamily: "mon-md",
+  },
+  bold: {
+    fontFamily: "mon-b",
+  },
   container: {
     flex: 1,
     backgroundColor: "#FDFFFF",

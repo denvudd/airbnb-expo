@@ -10,8 +10,9 @@ import {
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
-import { CATEGORIES } from "@/constants/categories";
+import { CATEGORIES } from "@/constants/Categories";
 import COLORS from "@/constants/Colors";
+import { defaultStyles } from "@/styles";
 
 interface ExploreHeaderProps {
   onCategoryChange: (category: string) => void;
@@ -43,8 +44,8 @@ const ExploreHeader: React.FC<ExploreHeaderProps> = ({ onCategoryChange }) => {
             <TouchableOpacity style={styles.searchBtn}>
               <Ionicons name="search" size={24} />
               <View>
-                <Text style={{ fontFamily: "mon-sb" }}>Where to?</Text>
-                <Text style={{ fontFamily: "mon" }}>Anywhere • Any week</Text>
+                <Text style={defaultStyles.semiBold}>Where to?</Text>
+                <Text style={defaultStyles.regular}>Anywhere • Any week</Text>
               </View>
             </TouchableOpacity>
           </Link>
@@ -137,9 +138,6 @@ const styles = StyleSheet.create({
       width: 1,
       height: 1,
     },
-  },
-  searchBtnTitle: {
-    fontFamily: "mon-sb",
   },
   searchButtonSubtitle: {
     fontFamily: "mon",

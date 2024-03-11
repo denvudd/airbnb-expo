@@ -3,6 +3,7 @@ import { Stack, useRouter } from "expo-router";
 import { TouchableOpacity } from "react-native";
 import { useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
+import { defaultStyles } from "@/styles";
 
 function RootLayoutNav() {
   const router = useRouter();
@@ -22,9 +23,7 @@ function RootLayoutNav() {
         options={{
           presentation: "modal",
           title: "Log in or sign up",
-          headerTitleStyle: {
-            fontFamily: "mon-sb",
-          },
+          headerTitleStyle: defaultStyles.semiBold,
           headerLeft: () => (
             <TouchableOpacity onPress={() => router.back()}>
               <Ionicons name="close-outline" size={28} />
