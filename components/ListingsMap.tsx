@@ -46,6 +46,7 @@ const ListingsMap: React.FC<ListingsMapProps> = ({ listings }) => {
         animationEnabled={false}
         showsUserLocation
         showsMyLocationButton
+        
         initialRegion={{
           latitude: 52.52,
           longitude: 13.405,

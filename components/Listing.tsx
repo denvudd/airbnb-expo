@@ -11,7 +11,7 @@ import {
 import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { FadeInRight, FadeOutLeft } from "react-native-reanimated";
-import Animated from "react-native-reanimated"
+import Animated from "react-native-reanimated";
 
 import { defaultStyles } from "@/styles";
 import type { ListingItem } from "@/types";
@@ -20,9 +20,10 @@ import COLORS from "@/constants/Colors";
 interface ListingProps {
   listings: any[];
   category: string;
+  refresh: number;
 }
 
-const Listing: FC<ListingProps> = ({ category, listings }) => {
+const Listing: FC<ListingProps> = ({ category, listings, refresh }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const listRef = useRef<FlatList | null>(null);
 
@@ -36,10 +37,20 @@ const Listing: FC<ListingProps> = ({ category, listings }) => {
     return () => clearTimeout(timeoutId);
   }, [category]);
 
+  useEffect(() => {
+    if (refresh) {
+      listRef.current?.scrollToOffset({ offset: 0, animated: true });
+    }
+  }, [refresh]);
+
   const renderRow: ListRenderItem<ListingItem> = ({ item }) => (
     <Link href={`/listing/${item.id}`} asChild>
       <TouchableOpacity>
-        <Animated.View style={styles.listing} entering={FadeInRight} exiting={FadeOutLeft}>
+        <Animated.View
+          style={styles.listing}
+          entering={FadeInRight}
+          exiting={FadeOutLeft}
+        >
           <Image source={{ uri: item.medium_url }} style={styles.image} />
           <TouchableOpacity style={styles.favoriteBtn}>
             <Ionicons name="heart-outline" size={22} color="#000" />
@@ -72,6 +83,9 @@ const Listing: FC<ListingProps> = ({ category, listings }) => {
         ref={listRef}
         data={isLoading ? [] : listings}
         renderItem={renderRow}
+        ListHeaderComponent={
+          <Text style={styles.info}>{listings.length} homes</Text>
+        }
       />
     </View>
   );
@@ -111,5 +125,11 @@ const styles = StyleSheet.create({
   rating: {
     fontFamily: "mon-sb",
     color: "#FF9529",
+  },
+  info: {
+    textAlign: "center",
+    fontFamily: "mon-sb",
+    fontSize: 16,
+    marginTop: 4,
   },
 });
