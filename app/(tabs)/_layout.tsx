@@ -63,7 +63,7 @@ const Layout: React.FC<LayoutProps> = ({}) => {
         name="profile"
         options={{
           tabBarLabel: "Profile",
-          headerShown: true,
+          headerShown: false,
           tabBarIcon: ({ size, color }) => (
             <Ionicons name="person-circle-outline" size={size} color={color} />
           ),
