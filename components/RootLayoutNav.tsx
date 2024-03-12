@@ -3,6 +3,10 @@ import { Stack, useRouter } from "expo-router";
 import { TouchableOpacity } from "react-native";
 import { useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
+
+import BookingHeader from "./BookingHeader";
+
+import COLORS from "@/constants/Colors";
 import { defaultStyles } from "@/styles";
 
 function RootLayoutNav() {
@@ -37,9 +41,20 @@ function RootLayoutNav() {
         options={{
           presentation: "transparentModal",
           animation: "fade",
+          headerTransparent: true,
+          headerTitle: () => <BookingHeader />,
           headerLeft: () => (
-            <TouchableOpacity onPress={() => router.back()}>
-              <Ionicons name="close-outline" size={28} />
+            <TouchableOpacity
+              onPress={() => router.back()}
+              style={{
+                backgroundColor: "#fff",
+                borderColor: COLORS.grey,
+                borderRadius: 20,
+                borderWidth: 1,
+                padding: 4,
+              }}
+            >
+              <Ionicons name="close-outline" size={22} />
             </TouchableOpacity>
           ),
         }}

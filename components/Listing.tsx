@@ -32,7 +32,7 @@ const Listing: FC<ListingProps> = ({ category, listings, refresh }) => {
 
     const timeoutId = setTimeout(() => {
       setIsLoading(false);
-    }, 200);
+    }, 100);
 
     return () => clearTimeout(timeoutId);
   }, [category]);
